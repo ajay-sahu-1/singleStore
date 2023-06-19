@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Details Storage</title>
+</head>
+<body>
+  <h1>User Details Storage</h1>
+  <form id="userForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" required><br>
+    <button type="submit">Save</button>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var userForm = document.getElementById("userForm");
+
+      userForm.addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var age = document.getElementById("age").value;
+
+       
+        var user = {
+          name: name,
+          email: email,
+          age: age
+        };
+
+        var userJSON = JSON.stringify(user);
+
+        
+        localStorage.setItem("user", userJSON);
+
+        alert("User details saved!");
+
+       
+        userForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>
